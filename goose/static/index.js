@@ -1,5 +1,6 @@
 let isDesktop = navigator['userAgent'].match(/(ipad|iphone|ipod|android|windows phone)/i) ? false : true;
 let fontunit = isDesktop ? 20 : ((window.innerWidth > window.innerHeight ? window.innerHeight : window.innerWidth) / 320) * 10;
+let iii=0;
 document.write('<style type="text/css">' +
     'html,body {font-size:' + (fontunit < 30 ? fontunit : '30') + 'px;}' +
     (isDesktop ? '#welcome,#GameTimeLayer,#GameLayerBG,#GameScoreLayer.SHADE{position: absolute;}' :
@@ -112,9 +113,50 @@ function gameInit() {
         id: "end"
     });
     createjs.Sound.registerSound({
-        src: "./static/music/tap.mp3",
-        id: "tap"
+        src: "./static/music/tap1.mp3",
+        id: "tap1"
     });
+	    createjs.Sound.registerSound({
+        src: "./static/music/tap2.mp3",
+        id: "tap2"
+    });
+	    createjs.Sound.registerSound({
+        src: "./static/music/tap3.mp3",
+        id: "tap3"
+    });
+	    createjs.Sound.registerSound({
+        src: "./static/music/tap4.mp3",
+        id: "tap4"
+    });
+	    createjs.Sound.registerSound({
+        src: "./static/music/tap5.mp3",
+        id: "tap5"
+    });
+	    createjs.Sound.registerSound({
+        src: "./static/music/tap6.mp3",
+        id: "tap6"
+    });
+	    createjs.Sound.registerSound({
+        src: "./static/music/tap7.mp3",
+        id: "tap7"
+    });
+	    createjs.Sound.registerSound({
+        src: "./static/music/tap8.mp3",
+        id: "tap8"
+    });
+	    createjs.Sound.registerSound({
+        src: "./static/music/tap9.mp3",
+        id: "tap9"
+    });
+	    createjs.Sound.registerSound({
+        src: "./static/music/tap10.mp3",
+        id: "tap10"
+    });
+	    createjs.Sound.registerSound({
+        src: "./static/music/tap11.mp3",
+        id: "tap11"
+    });
+	var iii=0;
     gameRestart();
 }
 
@@ -258,8 +300,17 @@ function gameTapEvent(e) {
         blockSize) || (p.cell == 2 && x > 2 * blockSize && x < 3 * blockSize) || (p.cell == 3 && x > 3 * blockSize)) {
         if (!_gameStart) {
             gameStart();
+		
         }
-        createjs.Sound.play("tap");
+		
+		iii++;
+		let name='tap';
+		name=name.concat(String(iii));
+		console.log(name)
+        createjs.Sound.play(name);
+		if (iii>=11){
+			iii=0;
+		}
         tar = document.getElementById(p.id);
         tar.className = tar.className.replace(_ttreg, ' tt$1');
         _gameBBListIndex++;
